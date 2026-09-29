@@ -58,7 +58,7 @@ char scr_dos_line[80];
  * numeric constants regardless, for consistency and clarity. */
 /* Bump GOPHER_VERSION here; the startup screen is the only place it is
  * printed. */
-#define GOPHER_VERSION "0.4.3"
+#define GOPHER_VERSION "0.4.4"
 
 /* A four-state spinner in the top-right corner while a fetch is in
  * progress: one character, redrawn every eighth frame (about six times
