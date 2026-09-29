@@ -81,10 +81,13 @@ static void spin_step(void)
 #define KEY_CRSR_UP 145
 #define KEY_HOME 19
 #define KEY_STOP 3
+/* The color keys need MEGA held, as every client binds them
+ * (2026-09-29): MEGA+letter arrives as the capital with bit 7 set
+ * (ssh 5.29), so the decode below sets key_mega and the handler asks
+ * for it. */
 #define KEY_FG_UPPER 0x46 /* F */
-#define KEY_FG_LOWER 0x66 /* f */
 #define KEY_BG_UPPER 0x42 /* B */
-#define KEY_BG_LOWER 0x62 /* b */
+static unsigned char key_mega;      /* the menu loop's decode sets it */
 
 
 /* This array dominates the client's static memory: each entry is a full
@@ -1710,7 +1713,7 @@ static void draw_menu_page(struct location *loc, unsigned char selected, unsigne
   }
   gopher_putsxy(0, ROW_STATUS, uiline);
 
-  gopher_putsxy(0, ROW_HELP, "Up/Dn Return Stop:Back Home A:Address G:Get M:Mark F/B:Color Help:Start");
+  gopher_putsxy(0, ROW_HELP, "Up/Dn Return Stop:Back Home A:Address G:Get M:Mark MEGA-F/B:Color Help:Start");
 }
 
 void main(void)
@@ -1868,8 +1871,11 @@ have_page:
 
       flushkeybuf();
       key = cgetc();
-      if (key >= 0xc1 && key <= 0xda) /* MEGA+letter: the capital with bit 7 set (ssh 5.29) */
+      key_mega = 0;
+      if (key >= 0xc1 && key <= 0xda) { /* MEGA+letter: the capital with bit 7 set (ssh 5.29) */
         key = (unsigned char)(key & 0x7f);
+        key_mega = 1;
+      }
 
       if (key == KEY_CRSR_DOWN) {
         selected = find_next_selectable(selected);
@@ -2032,10 +2038,10 @@ have_page:
         flushkeybuf();
         cgetc();
       }
-      else if (key == KEY_FG_UPPER || key == KEY_FG_LOWER) {
+      else if (key_mega && key == KEY_FG_UPPER) {
         gopher_screen_cycle_text_colour();
       }
-      else if (key == KEY_BG_UPPER || key == KEY_BG_LOWER) {
+      else if (key_mega && key == KEY_BG_UPPER) {
         /* Background and border move together and stay identical, so the
          * screen reads as a single surface. */
         gopher_screen_cycle_background();
