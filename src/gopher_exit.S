@@ -75,5 +75,10 @@ stub:
         sta $d030               ; ROM at $C000 and $E000, as .fini
         lda #0
         sta $d06a               ; the font's bank, once more, after every other write
+        ; That reset uses the IEC serial bus whenever a disk image is
+        ; mounted, and here one always is. A drive on the IEC port that is
+        ; switched off holds the bus lines low, and the ROM waits forever:
+        ; the banner, a blinking drive light, no READY. Switch the drive on
+        ; or unplug it (mega-net PLATFORM.md, trap 17).
         jmp ($fffc)             ; the KERNAL's reset entry
 stub_end:
