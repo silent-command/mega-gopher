@@ -20,7 +20,7 @@ import threading
 import time
 
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 7070
-HOST_ADV = "192.168.1.232"
+HOST_ADV = "192.168.1.251"
 
 CASES = []
 

@@ -18,7 +18,7 @@ import sys
 import time
 
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 7070
-HOST_IP = "192.168.1.232"
+HOST_IP = "192.168.1.251"
 
 MENU = (
     "iA menu with a text item below\t\terror.host\t1\r\n"
