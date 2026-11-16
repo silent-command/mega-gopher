@@ -53,7 +53,43 @@ gopher_exit_to_basic:
         sta $d069
         lda #0                  ; re-derive the font pointer from the classic
         sta $d06a               ; registers, so the bank goes to 0 after, and
-2:      ldx #0                  ; once more in the stub, last thing before the jump
+2:      ; Black between programs (the Net-Tools collection, mega-menu/README.md;
+        ; the C of this is black_until_dispatch in mega-ftp's m65_exit.c).
+        ; The ROM's reset paints colour 6 and reloads the palette into the
+        ; bank $D070 selects for writing, leaving $D070 alone. So colour 6
+        ; is made black in bank 3, the one BASIC draws from, and the
+        ; ROM's writes are sent to bank 0, until the collection's dispatcher
+        ; puts both back. Only when the handoff block ($FF87FF0 = "MNC")
+        ; is there.
+        lda #$f0
+        sta $fb
+        lda #$7f
+        sta $fc
+        lda #$f8
+        sta $fd
+        lda #$0f
+        sta $fe                 ; $fb-$fe -> $0FF87FF0
+        .byte $a3, $00          ; ldz #0
+        .byte $ea, $b2, $fb     ; lda [$fb],z
+        cmp #77
+        bne 7f
+        .byte $1b               ; inz
+        .byte $ea, $b2, $fb
+        cmp #78
+        bne 7f
+        .byte $1b
+        .byte $ea, $b2, $fb
+        cmp #67
+        bne 7f
+        lda #$ff
+        sta $d070               ; show and write bank 3
+        lda #0
+        sta $d106
+        sta $d206
+        sta $d306
+        lda #$3f
+        sta $d070               ; the ROM's writes: bank 0
+7:      ldx #0                  ; the font's bank goes once more in the stub, last thing before the jump
 3:      lda stub,x
         sta $1fb0,x
         inx

@@ -3,7 +3,7 @@
 A gopher browser for the MEGA65 on mega-net: menus, text files with a
 pager, downloads to disk through attic RAM, bookmarks in `GOPHER.CFG`,
 UTF-8 folded to the machine's glyphs. Native mode, llvm-mos, 80x25.
-Version in `src/gopher.c` (`GOPHER_VERSION`). 0BSD. Releases carry
+Version in `src/gopher.c` (`GOPHER_VERSION`). Apache License 2.0. Releases carry
 `bin/GOPHER.D81`.
 
 This is the oldest of the three clients: the platform modules the
