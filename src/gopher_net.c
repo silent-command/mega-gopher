@@ -52,10 +52,16 @@ const char *gopher_net_strerror(void)
 unsigned char gopher_net_init(void)
 {
   unsigned int frames;
-  unsigned char attempt, st;
+  unsigned char attempt, st, warm;
 
   mega65_io_enable();
-  meganet_call(MEGANET_INIT, 0, 0, 0, 0);
+  /* Launched from the Net-Tools menu (the handoff block "MNC" at
+   * $FF87FF0 with RETURN, 3, in its state byte: mega-menu/src/handoff.h),
+   * the program before left the controller running and its link up:
+   * INIT_WARM skips the reset and the PHY's 3.5 s (mega-net 5.23). */
+  warm = lpeek(0xff87ff0UL) == 77 && lpeek(0xff87ff1UL) == 78 &&
+         lpeek(0xff87ff2UL) == 67 && lpeek(0xff87ff3UL) == 3;
+  meganet_call(warm ? MEGANET_INIT_WARM : MEGANET_INIT, 0, 0, 0, 0);
 
   for (attempt = 0; attempt < DHCP_ATTEMPTS; attempt++) {
     meganet_dhcp_start();

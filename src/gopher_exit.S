@@ -21,8 +21,36 @@
         .text
         .global gopher_exit_to_basic
 gopher_exit_to_basic:
-        lda #0
-        sta $d6e0               ; ethernet controller: held in reset
+        ; The ethernet controller: held in reset, unless the collection's
+        ; handoff block ("MNC" at $FF87FF0) says its dispatcher runs next.
+        ; Then it is left running, link and all, for the next program's
+        ; INIT_WARM (mega-net 5.23). $FB-$FE as below, under SEI.
+        php
+        sei
+        lda #$f0
+        sta $fb
+        lda #$7f
+        sta $fc
+        lda #$f8
+        sta $fd
+        lda #$0f
+        sta $fe                 ; $fb-$fe -> $0FF87FF0
+        .byte $a3, $00          ; ldz #0
+        .byte $ea, $b2, $fb     ; lda [$fb],z
+        cmp #77
+        bne 8f
+        .byte $1b               ; inz
+        .byte $ea, $b2, $fb
+        cmp #78
+        bne 8f
+        .byte $1b
+        .byte $ea, $b2, $fb
+        cmp #67
+        beq 9f
+8:      lda #0
+        sta $d6e0               ; held in reset
+9:      .byte $a3, $00          ; ldz #0
+        plp
         ; Settle for half a second, interrupts still on: any event the
         ; controller had in flight is taken by the program's own handler,
         ; and the key that asked for this is released. The ROM enters its
