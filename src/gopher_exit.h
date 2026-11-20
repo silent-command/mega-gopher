@@ -1,3 +1,5 @@
+/* Copyright 2026 Justin Cameron
+ * SPDX-License-Identifier: Apache-2.0 */
 /* Back to BASIC's READY, the disk still mounted: see gopher_exit.S.
  * Never returns. */
 #ifndef GOPHER_EXIT_H

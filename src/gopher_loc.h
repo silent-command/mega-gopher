@@ -1,3 +1,5 @@
+/* Copyright 2026 Justin Cameron
+ * SPDX-License-Identifier: Apache-2.0 */
 /* struct location, shared.
  *
  * This header exists because it was NOT shared, and that caused a real

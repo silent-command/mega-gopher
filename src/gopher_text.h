@@ -1,3 +1,5 @@
+/* Copyright 2026 Justin Cameron
+ * SPDX-License-Identifier: Apache-2.0 */
 /* Line store for a fetched text file (FR-9/FR-10/FR-11 paging).
  *
  * Capacity comes from attic (expansion) RAM at $8000000 when the machine

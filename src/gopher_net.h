@@ -1,3 +1,5 @@
+/* Copyright 2026 Justin Cameron
+ * SPDX-License-Identifier: Apache-2.0 */
 /* Networking layer for the gopher client, built on mega-net through its
  * jump-table ABI (see ../mega-net/src/abi/meganet.h). The interface is
  * unchanged from the earlier stack's version so that the client above it is

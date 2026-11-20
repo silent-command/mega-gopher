@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright 2026 Justin Cameron
+# SPDX-License-Identifier: Apache-2.0
 """Hostile gopher server for testing the MEGA65 client's edge cases.
 
 Serves a menu at "/" linking to one case per selector, so the whole suite

@@ -1,3 +1,5 @@
+/* Copyright 2026 Justin Cameron
+ * SPDX-License-Identifier: Apache-2.0 */
 /* MEGA65 Gopher client -- phase 5: navigation (selection, follow-link,
  * back, home). Builds on phase 4's parsing/rendering; see
  * REQUIREMENTS.md section 9. */

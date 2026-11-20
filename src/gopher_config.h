@@ -1,3 +1,5 @@
+/* Copyright 2026 Justin Cameron
+ * SPDX-License-Identifier: Apache-2.0 */
 /* Persistent settings, stored as GOPHER.CFG on the .d81 the program runs
  * from (FR-12).
  *

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright 2026 Justin Cameron
+# SPDX-License-Identifier: Apache-2.0
 """Instrumented gopher test server for isolating R-8.
 
 Runs on this Mac (same LAN as the MEGA65), so we control exactly how the

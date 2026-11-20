@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright 2026 Justin Cameron
+# SPDX-License-Identifier: Apache-2.0
 """Minimal two-selector gopher server for exercising the text viewer.
 
 The client's type-0 path (fetch_text) is the last thing that needs

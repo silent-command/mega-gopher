@@ -1,3 +1,5 @@
+/* Copyright 2026 Justin Cameron
+ * SPDX-License-Identifier: Apache-2.0 */
 /* 80-column screen setup for the gopher client. See REQUIREMENTS.md
  * section 7 for the full story on why each of these steps exists --
  * skipping any of them causes either screen corruption (bad screen RAM

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright 2026 Justin Cameron
+# SPDX-License-Identifier: Apache-2.0
 """Serves a type-9 binary so the client's download path can be verified
 byte-for-byte.
 

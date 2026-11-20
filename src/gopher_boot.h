@@ -1,3 +1,5 @@
+/* Copyright 2026 Justin Cameron
+ * SPDX-License-Identifier: Apache-2.0 */
 #ifndef GOPHER_BOOT_H
 #define GOPHER_BOOT_H
 

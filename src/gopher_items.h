@@ -1,3 +1,5 @@
+/* Copyright 2026 Justin Cameron
+ * SPDX-License-Identifier: Apache-2.0 */
 /* Storage for a fetched gopher menu's items (type/display/selector/host/
  * port per item), needed for phase 5 navigation: the user needs to move
  * a selection cursor and follow a link *after* the whole menu has

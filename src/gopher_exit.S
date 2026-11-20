@@ -1,3 +1,5 @@
+/* Copyright 2026 Justin Cameron
+ * SPDX-License-Identifier: Apache-2.0 */
 ; Leaving for BASIC. The C version of this (mega-ftp's m65_exit.c) works
 ; there, but linking it into this program crashed start-up: with the
 ; function merely referenced, the network bring-up jumped into zero page

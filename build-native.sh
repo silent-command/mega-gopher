@@ -1,4 +1,6 @@
 #!/bin/sh
+# Copyright 2026 Justin Cameron
+# SPDX-License-Identifier: Apache-2.0
 # Build the gopher client as a native MEGA65 program (FR-0a) using
 # llvm-mos, and the .d81 that carries it together with the mega-net
 # network stack (FR-0b).

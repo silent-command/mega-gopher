@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright 2026 Justin Cameron
+# SPDX-License-Identifier: Apache-2.0
 """Pad a binary up to a whole number of 512-byte sectors.
 
 The MEGA65 hyppo fileio read512() call works in whole sectors, and a
